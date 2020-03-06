@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import { exec } from '@actions/exec'
 import { ExecOptions } from '@actions/exec/lib/interfaces'
 import { CONTAINERFUL_BIN } from './constants'
+import { commit } from './commit'
 
 export async function deploy({ GITHUB_TOKEN, dockerComposePath }) {
     const options: ExecOptions = {
@@ -14,6 +15,9 @@ export async function deploy({ GITHUB_TOKEN, dockerComposePath }) {
         ['login', '--github-token', GITHUB_TOKEN],
         options,
     )
-    await exec(CONTAINERFUL_BIN, ['deploy', '--file', dockerComposePath], options)
+    await exec(
+        CONTAINERFUL_BIN,
+        ['deploy', '--file', dockerComposePath],
+        options,
+    )
 }
-
