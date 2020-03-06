@@ -6,18 +6,23 @@ import { deploy } from './deploy'
 import { commit } from './commit'
 
 async function main() {
-    const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN', { required: true })
-    await deploy({
-        dockerComposePath: core.getInput('docker_compose_path'),
-        GITHUB_TOKEN,
-    })
+    try {
+        const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN', { required: true })
+        await deploy({
+            dockerComposePath: core.getInput('docker_compose_path'),
+            GITHUB_TOKEN,
+        })
 
-    await commit({
-        GITHUB_TOKEN,
-        MESSAGE: 'containerful deployment',
-        USER_EMAIL: 'action@containerful.xyz',
-        USER_NAME: 'containerful',
-    })
+        await commit({
+            GITHUB_TOKEN,
+            MESSAGE: 'containerful deployment',
+            USER_EMAIL: 'action@containerful.xyz',
+            USER_NAME: 'containerful',
+        })
+    } catch (e) {
+        core.setFailed('deployment failed: ' + e?.message)
+        return
+    }
 }
 
 main()
