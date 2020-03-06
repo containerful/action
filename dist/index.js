@@ -47,18 +47,20 @@ var core = __importStar(require("@actions/core"));
 var deploy_1 = require("./deploy");
 var commit_1 = require("./commit");
 function main() {
+    var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var GITHUB_TOKEN;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var GITHUB_TOKEN, e_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
+                    _b.trys.push([0, 3, , 4]);
                     GITHUB_TOKEN = core.getInput('GITHUB_TOKEN', { required: true });
                     return [4 /*yield*/, deploy_1.deploy({
                             dockerComposePath: core.getInput('docker_compose_path'),
                             GITHUB_TOKEN: GITHUB_TOKEN,
                         })];
                 case 1:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, commit_1.commit({
                             GITHUB_TOKEN: GITHUB_TOKEN,
                             MESSAGE: 'containerful deployment',
@@ -66,8 +68,13 @@ function main() {
                             USER_NAME: 'containerful',
                         })];
                 case 2:
-                    _a.sent();
+                    _b.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_1 = _b.sent();
+                    core.setFailed('deployment failed: ' + ((_a = e_1) === null || _a === void 0 ? void 0 : _a.message));
                     return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
