@@ -9,8 +9,7 @@
     "types": "dist/index.d.ts",
     "husky": {
         "hooks": {
-            "pre-commit": "tsc",
-            "pre-push": "rm -rf node_modules && npm i --prod"
+            "pre-commit": "exit 1"
         }
     },
     "mocha": {
