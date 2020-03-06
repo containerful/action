@@ -1,0 +1,25 @@
+name: 'Containerful Action'
+description: 'Deploy docker compose using containerful'
+author: 'Tommaso De Rossi'
+branding:
+  icon: 'chevrons-up'
+  color: 'red'
+inputs: 
+  docker_compose_path:
+    required: false
+    description: 'Path of docker compose to use'
+    default: 'docker-compose.yml'
+  GITHUB_TOKEN:
+    required: true
+    description: 'The github token used to login'
+# outputs:
+#   version:
+#     description: New version
+#   prefix:
+#     description: Prefix if set
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+# [bump]
+# 2.0.12
