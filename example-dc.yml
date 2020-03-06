@@ -1,0 +1,19 @@
+version: "3"
+services:
+  example-with-cli2:
+    image: gcr.io/cloudrun/hello
+    # command: bash
+    # labels:
+    #     - traefik.enable=true
+    #     - 'traefik.frontend.rule=Host:graphql.instabotnet.club'
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      URL_0: "http://mongoke/"
+      URL_1: "http://server"
+x-containerful:
+  id: 5e56af6376dca1001c1c0475
+  name: cli
+  region: us_central1

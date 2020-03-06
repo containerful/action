@@ -1,5 +1,9 @@
 import { strict as assert } from 'assert'
+import {deploy} from '../src/deploy'
 
-it('ready', () => {
-    assert.ok(false)
+it('deploys', async () => {
+    await deploy({
+        dockerComposePath: 'example-dc.yml',
+        GITHUB_TOKEN: process.env.GITHUB_TOKEN
+    })
 })

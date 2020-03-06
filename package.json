@@ -31,6 +31,7 @@
     "devDependencies": {
         "@types/mocha": "^5.2.7",
         "@types/node": "^12.12.29",
+        "dotenv": "^8.2.0",
         "husky": "^4.2.3",
         "mocha": "^6.1.4",
         "ts-node": "^8.2.0",
@@ -39,6 +40,6 @@
     "dependencies": {
         "@actions/core": "^1.2.3",
         "@actions/exec": "^1.0.3",
-        "containerful": "0.0.1"
+        "containerful": "0.0.3"
     }
 }
