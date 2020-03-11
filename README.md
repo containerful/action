@@ -16,13 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Login to push containers
+        uses: azure/docker-login@v1
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
+          login-server: gcr.io
+          username: yourusername
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Deploy
         uses: containerful/action@master
         with:
+          build: true # Also builds and pushes your docker imaged
           docker_compose_path: ./docker-compose.yml
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
