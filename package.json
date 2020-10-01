@@ -38,7 +38,7 @@
         "typescript": "^3.7.5"
     },
     "dependencies": {
-        "@actions/core": "^1.2.3",
+        "@actions/core": "^1.2.6",
         "@actions/exec": "^1.0.3",
         "containerful": "0.0.3"
     }
